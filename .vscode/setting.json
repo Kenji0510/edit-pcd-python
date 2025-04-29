@@ -1,0 +1,7 @@
+{
+    "python.analysis.extraPaths": [
+        "/home/kenji/workspace/python3/pcd_operation/lib/python3.12/site-packages",
+        "/home/kenji/workspace/python3/pcd_operation/lib64/python3.12/site-packages"
+    ],
+    "python.defaultInterpreterPath": "${workspaceFolder}/venv/bin/python"
+}

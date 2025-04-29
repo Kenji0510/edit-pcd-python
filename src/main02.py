@@ -4,23 +4,18 @@ import matplotlib.pyplot as plt
 
 o3d.visualization.webrtc_server.enable_webrtc()
 
-avia_path = "../data/avia/avia_66.pcd"
-mid360_path = "../data/mid360/cr_20.pcd"
-room_path = "../data/room/lab-room.pcd"
+total_pcd_path = "../data/removed_noise/total_pcd/filtered_avia6566_cr20pcd.pcd"
+room_path = "../data/removed_noise/room_pcd/filtered_mimoto_room.pcd"
 
-avia_pcd = o3d.io.read_point_cloud(avia_path)
-mid360_pcd = o3d.io.read_point_cloud(mid360_path)
+total_pcd = o3d.io.read_point_cloud(total_pcd_path)
 room_pcd = o3d.io.read_point_cloud(room_path)
-print(avia_pcd)
-print(mid360_pcd)
+print(total_pcd)
 print(room_pcd)
 
-total_pcd = mid360_pcd + avia_pcd
-total_pcd.paint_uniform_color([0, 1, 0])  # グレーでカラー設定
-print(total_pcd)
+total_pcd.paint_uniform_color([0, 1, 0]) 
 
 # <-- Downsampled -->
-room_pcd = room_pcd.voxel_down_sample(voxel_size=0.05)
+# room_pcd = room_pcd.voxel_down_sample(voxel_size=0.05)
 
 # <-- Subtraction background -->
 room_tree = o3d.geometry.KDTreeFlann(room_pcd)
@@ -36,6 +31,8 @@ background_diff_pcd = total_pcd.select_by_index(diff_indices)
 background_diff_pcd.paint_uniform_color([1, 0, 0]) 
 
 o3d.visualization.draw_geometries([total_pcd, background_diff_pcd], "diff room_pcd between total_pcd")
+
+o3d.io.write_point_cloud("../data/results/background_diff/background_diff.pcd", background_diff_pcd)
 
 # labels = np.array(total_pcd.cluster_dbscan(eps=0.2, min_points = 20, print_progress=True))
 # print(f"ラベル数: {labels.max()+1} クラスタ (ノイズは -1)")  

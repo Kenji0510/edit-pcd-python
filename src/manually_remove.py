@@ -1,7 +1,8 @@
 import open3d as o3d
 import numpy as np
 
-removed_noise_path = "../data/removed_noise/room_pcd/filtered_mimoto_room02.pcd"
+# removed_noise_path = "../data/removed_noise/room_pcd/filtered_mimoto_room02.pcd"
+removed_noise_path = "../data/removed_noise/total_pcd/case02/filtered_avia105106_cr55pcd.pcd"
 
 removed_noise_pcd = o3d.io.read_point_cloud(removed_noise_path)
 print(removed_noise_pcd)
@@ -36,7 +37,7 @@ o3d.visualization.draw_geometries([removed_noise_pcd, removed_noise_pcd, corner_
 x_margin_right = 0.5
 x_margin_left = 1.1
 y_margin_top = 0.4
-y_margin_bottom = 0.4
+y_margin_bottom = 1.5
 
 # 壁を削除
 mask = (points[:, 0] > x_min + x_margin_right) & (points[:, 0] < x_max - x_margin_left) & \
@@ -51,4 +52,5 @@ filtered_pcd.paint_uniform_color([0.7, 0.7, 0.7])     # 薄いグレー
 o3d.visualization.draw_geometries([filtered_pcd, corner_pcd])
 
 # 保存
-o3d.io.write_point_cloud("../data/results/manually_edit/removed_wall_mimoto_room.pcd", filtered_pcd)
+# o3d.io.write_point_cloud("../data/results/manually_edit/removed_wall_mimoto_room.pcd", filtered_pcd)
+o3d.io.write_point_cloud("../data/results/manually_edit/case02/removed_wall_total.pcd", filtered_pcd)

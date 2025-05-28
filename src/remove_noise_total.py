@@ -1,9 +1,9 @@
 import open3d as o3d
 import numpy as np
 
-avia01_path = "../data/avia/avia_65.pcd"
-avia02_path = "../data/avia/avia_66.pcd"
-mid360_path = "../data/mid360/cr_20.pcd"
+avia01_path = "../data/original_data/case02_data/avia/avia_105.pcd"
+avia02_path = "../data/original_data/case02_data/avia/avia_106.pcd"
+mid360_path = "../data/original_data/case02_data/mid360/cr_55.pcd"
 
 avia01_pcd = o3d.io.read_point_cloud(avia01_path)
 avia02_pcd = o3d.io.read_point_cloud(avia02_path)
@@ -27,4 +27,5 @@ filtered_pcd = total_pcd.select_by_index(np.where(mask)[0])
 print(filtered_pcd)
 o3d.visualization.draw_geometries([filtered_pcd])
 
-o3d.io.write_point_cloud("../data/removed_noise/filtered_avia6566_cr20pcd.pcd", filtered_pcd)
+save_path = "../data/removed_noise/total_pcd/case02/filtered_avia105106_cr55pcd.pcd"
+o3d.io.write_point_cloud(save_path, filtered_pcd)

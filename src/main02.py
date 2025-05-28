@@ -4,8 +4,8 @@ import matplotlib.pyplot as plt
 
 o3d.visualization.webrtc_server.enable_webrtc()
 
-total_pcd_path = "../data/removed_noise/total_pcd/filtered_avia6566_cr20pcd.pcd"
-room_path = "../data/removed_noise/room_pcd/filtered_mimoto_room.pcd"
+total_pcd_path = "../data/results/manually_edit/case02/removed_wall_total.pcd"
+room_path = "../data/results/manually_edit/removed_wall_mimoto_room.pcd"
 
 total_pcd = o3d.io.read_point_cloud(total_pcd_path)
 room_pcd = o3d.io.read_point_cloud(room_path)
@@ -32,7 +32,7 @@ background_diff_pcd.paint_uniform_color([1, 0, 0])
 
 o3d.visualization.draw_geometries([total_pcd, background_diff_pcd], "diff room_pcd between total_pcd")
 
-o3d.io.write_point_cloud("../data/results/background_diff/background_diff.pcd", background_diff_pcd)
+o3d.io.write_point_cloud("../data/results/background_diff/case02/background_diff.pcd", background_diff_pcd)
 
 # labels = np.array(total_pcd.cluster_dbscan(eps=0.2, min_points = 20, print_progress=True))
 # print(f"ラベル数: {labels.max()+1} クラスタ (ノイズは -1)")  

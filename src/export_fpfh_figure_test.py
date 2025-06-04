@@ -5,9 +5,9 @@ import matplotlib.pyplot as plt
 # ここを環境に合わせて変更してください
 # =========================
 # 読み込みたい JSON ファイルのパス（例: cluster_27_00.json）
-json_path = "../data/averaging_data/20250530-1635-onlyPerson_choiced_fpfh/cluster_27_01.json"
+json_path = "../data/averaging_data/20250530-1635-onlyPerson_choiced_fpfh/cluster_27_00.json"
 # 出力する PNG ファイルのパス
-output_png_path = "../data/averaging_data/20250530-1635-onlyPerson_choiced_fpfh-figures/cluster_27_01_fpfh.png"
+output_png_path = "../data/averaging_data/20250530-1635-onlyPerson_choiced_fpfh-figures/cluster_27_00_fpfh.png"
 # =========================
 
 # JSON を読み込む

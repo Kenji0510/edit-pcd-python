@@ -5,11 +5,12 @@ import os
 import re
 
 # 背景点群パス
-room_path = "../data/results/combined_back_data/room_back_avias_mid360.pcd"
+# room_path = "../data/results/combined_back_data/room_back_avias_mid360.pcd"
+room_path = "/home/kenji/workspace/python3/mimotos_avias/data/combine_data/combined.pcd"
 room_pcd = o3d.io.read_point_cloud(room_path)
 
 # 対象ディレクトリ
-pcd_dir = "/home/kenji/workspace/cpp/align_pcd/data/alignment_data/by_mimotos_matrix/combined_data"
+pcd_dir = "/home/kenji/workspace/cpp/align_pcd/data/alignment_data/by_mimotos_matrix/20250611-1445/combined_data"
 save_dir = "../data/results/background_diff/processed_data"
 os.makedirs(save_dir, exist_ok=True)
 

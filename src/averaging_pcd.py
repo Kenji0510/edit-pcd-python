@@ -74,9 +74,9 @@ def voxelize_and_save(input_dir, output_dir, voxel_size=0.05):
 if __name__ == "__main__":
     # --- ユーザが変更すべき部分 ---
     # PCD ファイルがあるフォルダを指定してください
-    input_dir = "/home/kenji/workspace/python3/pcd_operation/data/results/dbscan/each_cluster/20250530-1635-onlyPerson"
+    input_dir = "../data/results/dbscan/each_cluster/20250530-1643"
     # ボクセル化後の PCD 保存先フォルダ（存在しなければ自動作成されます）
-    output_dir = "../data/averaging_pcd/20250530-1635-onlyPerson_voxelized"
+    output_dir = "../data/averaging_data/20250530-1643-voxelized"
     # ボクセル化の一辺の長さ (例: 0.05m)。点群の密度や単位に合わせて調整してください
     voxel_size = 0.05
 

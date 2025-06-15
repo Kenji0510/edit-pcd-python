@@ -141,10 +141,10 @@ if __name__ == "__main__":
     # 環境に合わせて以下を書き換えてください
     # ===========================
     # (1) PCD ファイル群が入ったフォルダ
-    input_dir = "../data/averaging_data/20250530-1635-onlyPerson_choiced"
+    input_dir = "../data/averaging_data/20250530-1643_choiced"
 
     # (2) JSON 出力先フォルダ
-    output_dir = "../data/averaging_data/20250530-1635-onlyPerson_choiced_fpfh"
+    output_dir = "../data/averaging_data/20250530-1643_choiced_fpfh"
 
     # (3) 法線推定・FPFH 計算パラメータ
     normal_radius = 0.05

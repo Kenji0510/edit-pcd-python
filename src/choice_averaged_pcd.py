@@ -46,13 +46,13 @@ if __name__ == "__main__":
     # 環境に合わせてここを書き換えてください
     # ==========================================
     # (1) JSON ファイル群が格納されているフォルダ
-    json_dir = "../data/averaging_data/20250530-1635-onlyPerson_json"
+    json_dir = "../data/averaging_data/20250530-1643_json"
 
     # (2) ボクセル化済み PCD が置いてあるフォルダ
-    pcd_source_dir = "../data/averaging_data/20250530-1635-onlyPerson_voxelized_pcd"
+    pcd_source_dir = "../data/averaging_data/20250530-1643-voxelized_pcd"
 
     # (3) コピー先フォルダ（存在しなければ自動生成される）
-    pcd_dest_dir = "../data/averaging_data/20250530-1635-onlyPerson_choiced"
+    pcd_dest_dir = "../data/averaging_data/20250530-1643_choiced"
     # ==========================================
 
     copy_selected_pcds(json_dir, pcd_source_dir, pcd_dest_dir)

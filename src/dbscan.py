@@ -76,15 +76,15 @@ for pcd_path in pcd_files:
         # クラスタごとに色を付与
         color = plt.get_cmap("tab20")(j / (max_label if max_label > 0 else 1))[:3]
         cluster.paint_uniform_color(color)
-        o3d.io.write_point_cloud(f"../data/results/dbscan/each_cluster/20250530-1635-onlyPerson/cluster_{loop_index:02d}_{j:02d}.pcd", cluster)
+        o3d.io.write_point_cloud(f"../data/results/dbscan/each_cluster/20250530-1643/cluster_{loop_index:02d}_{j:02d}.pcd", cluster)
 
 
 
     # 全体（色付き）の点群も保存
-    o3d.io.write_point_cloud(f"../data/results/dbscan/overall/20250530-1635-onlyPerson/colored_clusters_{loop_index:02d}.pcd", pcd)
+    o3d.io.write_point_cloud(f"../data/results/dbscan/overall/20250530-1643/colored_clusters_{loop_index:02d}.pcd", pcd)
 
     # --- クラスタ情報をJSONで保存 ---
-    with open(f"../data/results/dbscan/overall/20250530-1635-onlyPerson/cluster_info{loop_index:02d}.json", "w") as f:
+    with open(f"../data/results/dbscan/overall/20250530-1643/cluster_info{loop_index:02d}.json", "w") as f:
         json.dump(cluster_info, f, indent=2, ensure_ascii=False)
 
     loop_index += 1

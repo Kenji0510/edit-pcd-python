@@ -131,9 +131,9 @@ def process_and_save_top3(input_dir, output_dir, min_height=0.7, top_k=3):
 if __name__ == "__main__":
     # --- ここを環境に合わせて変更してください ---
     # PCD ファイルが入ったフォルダ
-    input_dir = "../data/averaging_data/20250530-1635-onlyPerson_voxelized_pcd"
+    input_dir = "../data/averaging_data/20250530-1643-voxelized_pcd"
     # 結果 JSON をまとめて置きたいフォルダ
-    output_dir = "../data/averaging_data/20250530-1635-onlyPerson_json"
+    output_dir = "../data/averaging_data/20250530-1643_json"
     # 抽出条件：height >= 0.7
     min_height = 0.7
     # 各 y グループから上位 3 件を選択

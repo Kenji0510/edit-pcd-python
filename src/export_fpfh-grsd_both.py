@@ -2,7 +2,7 @@ import json
 import matplotlib.pyplot as plt
 import numpy as np
 
-file_num = "67_00"
+file_num = "123_00"
 
 # ファイルからデータを読み込む
 file_name = f"/home/kenji/workspace/cpp/create-features-pcl/data/output/output_features_vfh-grsd_{file_num}.json"
@@ -36,16 +36,16 @@ GRSD_upper = data.get("GRSD", {}).get("UPPER", [])
 # plt.savefig("../data/results/figure_analysis/FPFH_grsd_hist.png")
 # plt.close()
 
-plt.figure(figsize=(10, 5))
-plt.bar(np.arange(len(FPFH_lower)), FPFH_lower, label="LOWER", alpha=0.7)
-plt.bar(np.arange(len(FPFH_upper)), FPFH_upper, label="UPPER", alpha=0.7)
-plt.title("FPFH Histogram")
-plt.xlabel("Bin")
-plt.ylabel("Value")
-plt.legend()
-plt.tight_layout()
-plt.savefig("../data/results/figure_analysis/fpfh_hist.png")
-plt.close()
+# plt.figure(figsize=(10, 5))
+# plt.bar(np.arange(len(FPFH_lower)), FPFH_lower, label="LOWER", alpha=0.7)
+# plt.bar(np.arange(len(FPFH_upper)), FPFH_upper, label="UPPER", alpha=0.7)
+# plt.title("FPFH Histogram")
+# plt.xlabel("Bin")
+# plt.ylabel("Value")
+# plt.legend()
+# plt.tight_layout()
+# plt.savefig("../data/results/figure_analysis/fpfh_hist.png")
+# plt.close()
 
 # GRSDヒストグラム
 save_path = f"../data/results/figure_analysis/grsd_hist_{file_num}.png"
@@ -79,7 +79,8 @@ FPFH_upper_norm = normalize(FPFH_upper)
 # GRSD_lower_norm = normalize(GRSD_lower)
 # GRSD_upper_norm = normalize(GRSD_upper)
 
-GRSD_all_norm = normalize(GRSD_all)
+# GRSD_all_norm = normalize(GRSD_all)
+GRSD_all_norm = minmax_normalize(GRSD_all)
 GRSD_lower_norm = minmax_normalize(GRSD_lower)
 GRSD_upper_norm = minmax_normalize(GRSD_upper)
 
@@ -100,6 +101,18 @@ plt.bar(np.arange(len(GRSD_all_norm)), GRSD_all_norm, label="ALL (norm)", alpha=
 plt.bar(np.arange(len(GRSD_lower_norm)), GRSD_lower_norm, label="LOWER (norm)", alpha=0.7)
 plt.bar(np.arange(len(GRSD_upper_norm)), GRSD_upper_norm, label="UPPER (norm)", alpha=0.7)
 plt.title("GRSD Histogram (Normalized)")
+plt.xlabel("Bin")
+plt.ylabel("Normalized Value")
+plt.legend()
+plt.tight_layout()
+plt.savefig(save_path)
+plt.close()
+
+# For ALL
+save_path = f"../data/results/figure_analysis/all-grsd_hist_normalized_{file_num}.png"
+plt.figure(figsize=(10, 5))
+plt.bar(np.arange(len(GRSD_all_norm)), GRSD_all_norm, label="ALL (norm)", alpha=0.7)
+plt.title("GRSD ALL Histogram (Normalized)")
 plt.xlabel("Bin")
 plt.ylabel("Normalized Value")
 plt.legend()

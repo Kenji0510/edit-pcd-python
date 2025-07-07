@@ -10,7 +10,7 @@ room_path = "/home/kenji/workspace/python3/mimotos_avias/data/combine_data/combi
 room_pcd = o3d.io.read_point_cloud(room_path)
 
 # 対象ディレクトリ
-pcd_dir = "/home/kenji/workspace/cpp/align_pcd/data/alignment_data/by_mimotos_matrix/20250611-1445/combined_data"
+pcd_dir = "/home/kenji/workspace/cpp/align_pcd/data/alignment_data/by_mimotos_matrix/20250616-0849-onlyPerson/voxelized_combined_data"
 save_dir = "../data/results/background_diff/processed_data"
 os.makedirs(save_dir, exist_ok=True)
 

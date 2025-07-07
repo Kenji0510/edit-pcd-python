@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # ファイルからデータを読み込む
-with open("/home/kenji/workspace/cpp/create-features-pcl/data/output/output_features_06_00.json", "r") as f:
+with open("/home/kenji/workspace/cpp/create-features-pcl/data/output/output_features_123_00.json", "r") as f:
     data = json.load(f)
 
 GRSD = data.get("GRSD", [])

@@ -6,7 +6,8 @@ import glob
 import os
 
 # PCDファイル群をナンバリング順に取得
-pcd_dir = "/home/kenji/workspace/python3/mimotos_avias/data/removed_data"
+pcd_dir = "/home/kenji/workspace/python3/research/pcd_operations/data/background_diff/20250630/lidar03/suitcase"
+# pcd_dir = "../data/results/background_diff/processed_data"
 pcd_files = sorted(
     glob.glob(os.path.join(pcd_dir, "background_diff_*.pcd")),
     key=lambda x: int(os.path.splitext(os.path.basename(x))[0].split('_')[-1])
@@ -21,8 +22,8 @@ for pcd_path in pcd_files:
     print(f"Processing: {pcd_path}")
     print(pcd)
 
-    eps = 0.12
-    min_points = 20
+    eps = 0.2   # previous: 0.2
+    min_points = 10  # previous: 15
 
     labels = np.array(pcd.cluster_dbscan(eps=eps, min_points = min_points, print_progress=True))
     print(f"ラベル数: {labels.max()+1} クラスタ (ノイズは -1)")  
@@ -76,15 +77,15 @@ for pcd_path in pcd_files:
         # クラスタごとに色を付与
         color = plt.get_cmap("tab20")(j / (max_label if max_label > 0 else 1))[:3]
         cluster.paint_uniform_color(color)
-        o3d.io.write_point_cloud(f"../data/results/dbscan/each_cluster/20250530-1643/cluster_{loop_index:02d}_{j:02d}.pcd", cluster)
+        o3d.io.write_point_cloud(f"../data/results/dbscan/each_cluster/20250630/lidar03/suitcase/cluster_{loop_index:02d}_{j:02d}.pcd", cluster)
 
 
 
     # 全体（色付き）の点群も保存
-    o3d.io.write_point_cloud(f"../data/results/dbscan/overall/20250530-1643/colored_clusters_{loop_index:02d}.pcd", pcd)
+    o3d.io.write_point_cloud(f"../data/results/dbscan/each_cluster/20250630/lidar03/suitcase/colored_clusters_{loop_index:02d}.pcd", pcd)
 
     # --- クラスタ情報をJSONで保存 ---
-    with open(f"../data/results/dbscan/overall/20250530-1643/cluster_info{loop_index:02d}.json", "w") as f:
+    with open(f"../data/results/dbscan/each_cluster/20250630/lidar03/suitcase/cluster_info{loop_index:02d}.json", "w") as f:
         json.dump(cluster_info, f, indent=2, ensure_ascii=False)
 
     loop_index += 1

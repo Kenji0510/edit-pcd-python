@@ -3,7 +3,9 @@ import re
 import json
 import open3d as o3d
 
-def get_pcd_files_grouped_by_y(input_dir, pattern=r"^cluster_(\d{2})_(\d{2})\.pcd$"):
+
+# def get_pcd_files_grouped_by_y(input_dir, pattern=r"^cluster_(\d{2})_(\d{2})\.pcd$"):
+def get_pcd_files_grouped_by_y(input_dir, pattern = r"^cluster_(\d+)_(\d+)\.pcd$"):
     """
     input_dir 内の PCD ファイルを走査し、"cluster_{y}_{z}.pcd" という形式を正規表現でマッチさせる。
     グループ化キーとして、y（最初の2桁）を使って辞書 { y_str: [ファイル名, ...], ... } を返す。
@@ -72,6 +74,7 @@ def process_and_save_top3(input_dir, output_dir, min_height=0.7, top_k=3):
 
     # step1: ファイルを y 番号ごとにグループ化
     groups = get_pcd_files_grouped_by_y(input_dir)
+    print(f"[info] グループ数: {len(groups)} （y 番号ごと）")
 
     # step2: 各グループを処理
     for y_str, flist in groups.items():
@@ -100,7 +103,7 @@ def process_and_save_top3(input_dir, output_dir, min_height=0.7, top_k=3):
             # 一旦すべて追加（後で絞り込み）
             metrics_list.append((key_name, m))
 
-            print(f"  ・{key_name}: num={m['num_points']}, w={m['width']:.4f}, d={m['depth']:.4f}, h={m['height']:.4f}")
+            # print(f"  ・{key_name}: num={m['num_points']}, w={m['width']:.4f}, d={m['depth']:.4f}, h={m['height']:.4f}")
 
         # step3: height >= min_height のものだけをフィルタ
         filtered = [
@@ -131,11 +134,12 @@ def process_and_save_top3(input_dir, output_dir, min_height=0.7, top_k=3):
 if __name__ == "__main__":
     # --- ここを環境に合わせて変更してください ---
     # PCD ファイルが入ったフォルダ
-    input_dir = "../data/averaging_data/20250530-1643-voxelized_pcd"
+    # input_dir = "../data/averaging_data/20250611-1445/voxelized_data"
+    input_dir = "../data/results/dbscan/each_cluster/20250616-0849-onlyPerson"
     # 結果 JSON をまとめて置きたいフォルダ
-    output_dir = "../data/averaging_data/20250530-1643_json"
+    output_dir = "../data/averaging_data/20250616-0849-onlyPerson/cluster-info"
     # 抽出条件：height >= 0.7
-    min_height = 0.7
+    min_height = 0.9
     # 各 y グループから上位 3 件を選択
     top_k = 3
 
